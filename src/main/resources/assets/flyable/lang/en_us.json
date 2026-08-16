@@ -1,5 +1,10 @@
 {
   "item.flyable.flight_slime_ball": "Flight Slime Ball",
+  "item.flyable.temporary_flight_slime_ball": "Temporary Flight Slime Ball",
   "message.flyable.flight.enabled": "Flight slime enabled",
-  "message.flyable.flight.disabled": "Flight slime disabled"
+  "message.flyable.flight.disabled": "Flight slime disabled",
+  "message.flyable.temporary_flight.enabled": "Temporary flight slime enabled",
+  "message.flyable.temporary_flight.ended": "Temporary flight ended, cooling down",
+  "message.flyable.temporary_flight.cooldown": "Temporary flight cooldown: %s s",
+  "message.flyable.temporary_flight.already_permanent": "Flight slime is already enabled"
 }

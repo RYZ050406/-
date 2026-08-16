@@ -30,6 +30,11 @@ gradle wrapper --gradle-version 9.2.0
 
 ```mcfunction
 /give @p flyable:flight_slime_ball
+/give @p flyable:temporary_flight_slime_ball
 ```
 
-右键空气或方块切换飞行。开启时仍保持当前游戏模式，不会切成创造模式；再次右键会恢复开启前的飞行权限和飞行速度。
+`flyable:flight_slime_ball` 右键空气或方块切换无限飞行，没有冷却。
+
+`flyable:temporary_flight_slime_ball` 右键开启最多 10 秒的飞行；飞行结束或再次右键提前结束后，进入 30 秒冷却。这个冷却只影响限时飞行粘液球，不影响普通飞行粘液球。
+
+开启时仍保持当前游戏模式，不会切成创造模式；关闭时会按当前游戏模式恢复飞行权限，避免创造模式飞行被误关。

@@ -21,23 +21,39 @@ public final class ModItems {
 			FlightSlimeBallItem::new,
 			new Item.Properties().stacksTo(1)
 	);
+	public static final Item TEMPORARY_FLIGHT_SLIME_BALL = register(
+			"temporary_flight_slime_ball",
+			TemporaryFlightSlimeBallItem::new,
+			new Item.Properties().stacksTo(1)
+	);
 
 	private ModItems() {
 	}
 
 	public static void initialize() {
 		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
-				.register(entries -> entries.accept(FLIGHT_SLIME_BALL));
+				.register(entries -> {
+					entries.accept(FLIGHT_SLIME_BALL);
+					entries.accept(TEMPORARY_FLIGHT_SLIME_BALL);
+				});
 		UseBlockCallback.EVENT.register((player, level, hand, hitResult) -> {
-			if (!player.getItemInHand(hand).is(FLIGHT_SLIME_BALL)) {
-				return InteractionResult.PASS;
+			if (player.getItemInHand(hand).is(FLIGHT_SLIME_BALL)) {
+				if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) {
+					FlightPower.togglePermanent(serverPlayer);
+				}
+
+				return InteractionResult.SUCCESS;
 			}
 
-			if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) {
-				FlightPower.toggle(serverPlayer);
+			if (player.getItemInHand(hand).is(TEMPORARY_FLIGHT_SLIME_BALL)) {
+				if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) {
+					FlightPower.toggleTemporary(serverPlayer);
+				}
+
+				return InteractionResult.SUCCESS;
 			}
 
-			return InteractionResult.SUCCESS;
+			return InteractionResult.PASS;
 		});
 	}
 

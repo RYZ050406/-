@@ -9,8 +9,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 
-public final class FlightSlimeBallItem extends Item {
-	public FlightSlimeBallItem(Properties properties) {
+public final class TemporaryFlightSlimeBallItem extends Item {
+	public TemporaryFlightSlimeBallItem(Properties properties) {
 		super(properties);
 	}
 
@@ -21,7 +21,7 @@ public final class FlightSlimeBallItem extends Item {
 		}
 
 		if (user instanceof ServerPlayer player) {
-			FlightPower.togglePermanent(player);
+			FlightPower.toggleTemporary(player);
 		}
 
 		return InteractionResult.SUCCESS;
@@ -36,7 +36,7 @@ public final class FlightSlimeBallItem extends Item {
 		}
 
 		if (user instanceof ServerPlayer player) {
-			FlightPower.togglePermanent(player);
+			FlightPower.toggleTemporary(player);
 		}
 
 		return InteractionResult.SUCCESS;

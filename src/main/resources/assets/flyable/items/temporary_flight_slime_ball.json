@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "flyable:item/temporary_flight_slime_ball"
+  }
+}
