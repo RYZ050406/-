@@ -1,0 +1,58 @@
+# Minecraft runtime output
+/logs/
+/crash-reports/
+/debug/
+/screenshots/
+/replay_recordings/
+/shaderpacks/
+/versions/
+/libraries/
+/assets/
+/webcache*/
+/usercache.json
+/usernamecache.json
+/launcher_profiles.json
+/launcher_accounts.json
+/options.txt
+/optionsof.txt
+/servers.dat
+/realms_persistence.json
+
+# Launcher and local runtime folders
+.hmcl/
+.minecraft/logs/
+.minecraft/crash-reports/
+.minecraft/assets/
+.minecraft/libraries/
+.minecraft/versions/
+.minecraft/webcache*/
+
+# Backups and temp files
+backups/
+*.tmp
+*.bak
+*.old
+*.log
+.DS_Store
+Thumbs.db
+
+# Java / Gradle / modding build output
+.gradle/
+build/
+out/
+target/
+*.class
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+*.war
+*.ear
+
+# IDE metadata
+.idea/
+.vscode/
+*.iml
+
+# Node tooling, if resource-pack tooling is added later
+node_modules/
+dist/
+.cache/

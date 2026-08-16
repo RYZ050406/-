@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "flyable",
+  "version": "${version}",
+  "name": "flyable",
+  "description": "Adds a high-speed survival flight slime ball.",
+  "authors": [
+    "Codex"
+  ],
+  "license": "All-Rights-Reserved",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.flyable.FlyableMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
