@@ -1,44 +1,44 @@
-plugins {
-	id "net.fabricmc.fabric-loom-remap" version "${loom_version}"
-	id "maven-publish"
+def isWindows = System.getProperty("os.name").toLowerCase().contains("windows")
+def gradlewCommand = isWindows
+		? ["cmd", "/c", file("gradlew.bat").absolutePath]
+		: [file("gradlew").absolutePath]
+
+tasks.register("buildFlyable", Exec) {
+	group = "build"
+	description = "Build the flyable Fabric mod."
+	workingDir = file("mods/flyable")
+	commandLine gradlewCommand + ["--no-daemon", "build"]
 }
 
-version = project.mod_version
-group = project.maven_group
-
-base {
-	archivesName = project.archives_base_name
+tasks.register("buildPerseverance", Exec) {
+	group = "build"
+	description = "Build the perseverance Fabric mod."
+	workingDir = file("mods/perseverance")
+	commandLine gradlewCommand + ["--no-daemon", "build"]
 }
 
-repositories {
+tasks.register("cleanFlyable", Exec) {
+	group = "build"
+	description = "Clean the flyable Fabric mod."
+	workingDir = file("mods/flyable")
+	commandLine gradlewCommand + ["--no-daemon", "clean"]
 }
 
-dependencies {
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings loom.officialMojangMappings()
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+tasks.register("cleanPerseverance", Exec) {
+	group = "build"
+	description = "Clean the perseverance Fabric mod."
+	workingDir = file("mods/perseverance")
+	commandLine gradlewCommand + ["--no-daemon", "clean"]
 }
 
-processResources {
-	inputs.property "version", project.version
-
-	filesMatching("fabric.mod.json") {
-		expand "version": inputs.properties.version
-	}
+tasks.register("build") {
+	group = "build"
+	description = "Build all Fabric mods."
+	dependsOn("buildFlyable", "buildPerseverance")
 }
 
-tasks.withType(JavaCompile).configureEach {
-	it.options.release = 21
-}
-
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
-
-	withSourcesJar()
-
-	sourceCompatibility = JavaVersion.VERSION_21
-	targetCompatibility = JavaVersion.VERSION_21
+tasks.register("clean") {
+	group = "build"
+	description = "Clean all Fabric mods."
+	dependsOn("cleanFlyable", "cleanPerseverance")
 }

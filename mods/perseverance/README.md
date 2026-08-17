@@ -4,12 +4,27 @@ Minecraft `1.21.11` 的 Fabric 模组，新增红色下界之星召唤物和 Bos
 
 ## 使用
 
-构建：
+需要：
+
+- JDK 21
+- 游戏客户端或服务端需要安装 Fabric API `0.141.6+1.21.11` 或兼容版本
+
+从仓库根目录构建：
 
 ```powershell
-$env:JAVA_HOME='C:\Users\ASUS\AppData\Roaming\.minecraft\runtime\java-runtime-delta'
-..\gradlew.bat build
+.\gradlew.bat buildPerseverance
 ```
+
+或进入本模组目录构建：
+
+```powershell
+cd mods\perseverance
+..\..\gradlew.bat build
+```
+
+构建完成后，把 `mods/perseverance/build/libs/perseverance-1.0.0.jar` 放进客户端或服务端的 `mods` 文件夹。
+
+这个构建不会内置 Fabric API，需要在 `mods` 文件夹里单独放 Fabric API。
 
 获取召唤物：
 
