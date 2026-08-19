@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "boss",
+  "version": "${version}",
+  "name": "Boss",
+  "description": "Adds boss swords, fake effect blocks, special boots, and a boss mode star.",
+  "authors": [
+    "Codex"
+  ],
+  "license": "All-Rights-Reserved",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.boss.BossMod"
+    ],
+    "client": [
+      "com.boss.client.BossClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

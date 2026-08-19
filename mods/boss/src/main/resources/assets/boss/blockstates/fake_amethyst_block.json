@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "boss:block/fake_amethyst_block"
+    }
+  }
+}

@@ -9,6 +9,7 @@ mods/
   flyable/        生存模式飞行粘液球
   perseverance/   起飞超人 Boss 与毅力之证
   connection/      屎、投掷物与果蔬粉合成
+  boss/            Boss 武器、靴子与 BOSS 模式
 ```
 
 根目录保留 Gradle Wrapper：
@@ -46,6 +47,7 @@ $env:JAVA_HOME='C:\Users\ASUS\AppData\Roaming\.minecraft\runtime\java-runtime-de
 .\gradlew.bat buildFlyable
 .\gradlew.bat buildPerseverance
 .\gradlew.bat buildConnection
+.\gradlew.bat buildBoss
 ```
 
 也可以进入模组目录构建：
@@ -61,6 +63,7 @@ cd mods\flyable
 mods/flyable/build/libs/flyable-1.0.0.jar
 mods/perseverance/build/libs/perseverance-1.0.0.jar
 mods/connection/build/libs/connection-1.0.0.jar
+mods/boss/build/libs/boss-1.0.0.jar
 ```
 
 这些 jar 都不内置 Fabric API。使用时需要把 Fabric API 单独放进客户端或服务端的 `mods` 文件夹。
@@ -90,3 +93,22 @@ mods/connection/build/libs/connection-1.0.0.jar
 - 不蹲下时右键“屎”会像鸡蛋一样丢出，命中实体造成 3 点伤害。
 - 蹲下时右键“屎”会吃下去，恢复 3 格饱食度，并获得 60 秒反胃 I、中毒 I、饱和 I。
 - 工作台中任意位置放入 3 格水果、3 格蔬菜和 1 格 87 个“屎”，可合成 1 个“一罐果蔬粉”。
+
+`boss`：
+
+- `/give @p boss:sword_one`
+- `/give @p boss:sword_two`
+- `/give @p boss:sword_three`
+- `/give @p boss:sword_four`
+- `/give @p boss:sword_five`
+- `/give @p boss:dog_king_sword`
+- `/give @p boss:leaping_leather_boots`
+- `/give @p boss:god_netherite_boots`
+- `/give @p boss:boss_mode_star`
+- 五把不可破坏的剑基础伤害 5，攻击无 CD；右键会在前方 10 格生成对应伪方块球体，并触发不破坏地形、无伤害、只击退的爆炸效果。
+- 狗王剑不可破坏，基础伤害 10，主手持有时移动速度 +0.05；右键射出 40 格激光，命中活体造成 20 点可被护甲和抗性削减的普通伤害，CD 30 秒。
+- 每把剑独立记录 10 秒技能 CD，手持时会在经验条上方显示冷却或“已就绪”。
+- 伪绿宝石块/伪粉色羊毛会给玩家 1 秒缓慢 I，伪红石块会灼烧 1 秒，伪紫水晶块会给 1 秒挖掘疲劳 I，伪黑曜石会给 1 秒反胃 I。
+- 皮革靴子不可破坏，提供跳跃高度约 +2 格、护甲 +3 格、速度 +0.03。
+- 下界合金靴子不可破坏，提供跳跃高度约 +2 格、护甲 +10 格、速度 +0.05，并获得抗性提升 II。
+- 绿色下界之星右键进入 BOSS 模式，所有玩家可见顶部 BOSS 血条，死亡后退出。
