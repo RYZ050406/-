@@ -8,6 +8,7 @@
 mods/
   flyable/        生存模式飞行粘液球
   perseverance/   起飞超人 Boss 与毅力之证
+  connection/      屎、投掷物与果蔬粉合成
 ```
 
 根目录保留 Gradle Wrapper：
@@ -44,6 +45,7 @@ $env:JAVA_HOME='C:\Users\ASUS\AppData\Roaming\.minecraft\runtime\java-runtime-de
 ```powershell
 .\gradlew.bat buildFlyable
 .\gradlew.bat buildPerseverance
+.\gradlew.bat buildConnection
 ```
 
 也可以进入模组目录构建：
@@ -58,9 +60,10 @@ cd mods\flyable
 ```text
 mods/flyable/build/libs/flyable-1.0.0.jar
 mods/perseverance/build/libs/perseverance-1.0.0.jar
+mods/connection/build/libs/connection-1.0.0.jar
 ```
 
-这两个 jar 都不内置 Fabric API。使用时需要把 Fabric API 单独放进客户端或服务端的 `mods` 文件夹。
+这些 jar 都不内置 Fabric API。使用时需要把 Fabric API 单独放进客户端或服务端的 `mods` 文件夹。
 
 ## 模组
 
@@ -78,3 +81,12 @@ mods/perseverance/build/libs/perseverance-1.0.0.jar
 - 红色下界之星右键地面召唤 Boss“起飞超人”。
 - 起飞超人血量 1000，攻击伤害 5，每秒攻击一次，攻击距离 4 格，显示 Boss 血条。
 - 起飞超人使用 TheGou_ 皮肤，身穿钻套并手持钻剑作为装饰，死亡掉落“毅力之证”。
+
+`connection`：
+
+- `/give @p connection:poop 87`
+- `/give @p connection:fruit_vegetable_powder`
+- 玩家按住 shift 时每秒必定掉落 1 个“屎”，每秒最多掉落 1 个。
+- 不蹲下时右键“屎”会像鸡蛋一样丢出，命中实体造成 3 点伤害。
+- 蹲下时右键“屎”会吃下去，恢复 3 格饱食度，并获得 60 秒反胃 I、中毒 I、饱和 I。
+- 工作台中任意位置放入 3 格水果、3 格蔬菜和 1 格 87 个“屎”，可合成 1 个“一罐果蔬粉”。

@@ -17,6 +17,13 @@ tasks.register("buildPerseverance", Exec) {
 	commandLine gradlewCommand + ["--no-daemon", "build"]
 }
 
+tasks.register("buildConnection", Exec) {
+	group = "build"
+	description = "Build the connection Fabric mod."
+	workingDir = file("mods/connection")
+	commandLine gradlewCommand + ["--no-daemon", "build"]
+}
+
 tasks.register("cleanFlyable", Exec) {
 	group = "build"
 	description = "Clean the flyable Fabric mod."
@@ -31,14 +38,21 @@ tasks.register("cleanPerseverance", Exec) {
 	commandLine gradlewCommand + ["--no-daemon", "clean"]
 }
 
+tasks.register("cleanConnection", Exec) {
+	group = "build"
+	description = "Clean the connection Fabric mod."
+	workingDir = file("mods/connection")
+	commandLine gradlewCommand + ["--no-daemon", "clean"]
+}
+
 tasks.register("build") {
 	group = "build"
 	description = "Build all Fabric mods."
-	dependsOn("buildFlyable", "buildPerseverance")
+	dependsOn("buildFlyable", "buildPerseverance", "buildConnection")
 }
 
 tasks.register("clean") {
 	group = "build"
 	description = "Clean all Fabric mods."
-	dependsOn("cleanFlyable", "cleanPerseverance")
+	dependsOn("cleanFlyable", "cleanPerseverance", "cleanConnection")
 }

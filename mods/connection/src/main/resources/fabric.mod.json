@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "connection",
+  "version": "${version}",
+  "name": "connection",
+  "description": "Adds poop, thrown poop, and fruit-vegetable powder crafting.",
+  "authors": [
+    "Codex"
+  ],
+  "license": "All-Rights-Reserved",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.connection.ConnectionMod"
+    ],
+    "client": [
+      "com.connection.client.ConnectionClient"
+    ]
+  },
+  "mixins": [
+    "connection.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
