@@ -1,6 +1,6 @@
 # connection Fabric 模组
 
-Minecraft `1.21.11` 的 Fabric 模组，新增“屎”、可投掷的屎实体，以及“一罐果蔬粉”合成。
+Minecraft `1.21.11` 的 Fabric 模组，新增“屎”、“超级答辩”、可投掷的屎实体、拉屎开关，以及“一罐果蔬粉”合成。
 
 ## 使用
 
@@ -30,11 +30,15 @@ cd mods\connection
 
 ```mcfunction
 /give @p connection:poop 87
+/give @p connection:super_poop
 /give @p connection:fruit_vegetable_powder
 ```
 
-玩家按住 shift 时每秒必定掉落 1 个“屎”，每秒最多掉落 1 个。
+默认不会自动拉屎。按 K 可以只为自己切换拉屎模式；开启后，玩家按住 shift 时每秒必定掉落 1 个“屎”，每秒最多掉落 1 个，切换结果会显示在经验条上方。
 
 “屎”最多堆叠 87 个。不蹲下时右键会像鸡蛋一样丢出，命中实体造成 3 点伤害；蹲下时右键会吃下去，恢复 3 格饱食度，并获得 60 秒反胃 I、中毒 I、饱和 I。
 
+五个“屎”在工作台按十字排列可以合成 1 个棕色加粗名称、带附魔光效的“超级答辩”。不蹲下时右键会丢出，命中实体造成 7 点伤害；蹲下时右键会吃下去，恢复 20 点饱食度且没有负面效果。
+
 工作台中任意位置放入 3 格水果、3 格蔬菜和 1 格 87 个“屎”，可合成 1 个“一罐果蔬粉”。水果和蔬菜范围由 `data/connection/tags/item/fruits.json` 与 `data/connection/tags/item/vegetables.json` 控制。
+

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " P ",
+    "PPP",
+    " P "
+  ],
+  "key": {
+    "P": "connection:poop"
+  },
+  "result": {
+    "id": "connection:super_poop",
+    "count": 1
+  }
+}

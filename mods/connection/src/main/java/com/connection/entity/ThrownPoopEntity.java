@@ -1,6 +1,7 @@
 package com.connection.entity;
 
 import com.connection.item.ModItems;
+import com.connection.item.PoopItem;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.Entity;
@@ -14,7 +15,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
 public final class ThrownPoopEntity extends ThrowableItemProjectile {
-	private static final float HIT_DAMAGE = 3.0F;
+	private static final float DEFAULT_HIT_DAMAGE = 3.0F;
 
 	public ThrownPoopEntity(EntityType<? extends ThrownPoopEntity> entityType, Level level) {
 		super(entityType, level);
@@ -49,7 +50,12 @@ public final class ThrownPoopEntity extends ThrowableItemProjectile {
 	protected void onHitEntity(EntityHitResult hitResult) {
 		super.onHitEntity(hitResult);
 		Entity owner = getOwner();
-		hitResult.getEntity().hurt(damageSources().thrown(this, owner), HIT_DAMAGE);
+		ItemStack stack = getItem();
+		float damage = DEFAULT_HIT_DAMAGE;
+		if (stack.getItem() instanceof PoopItem poopItem) {
+			damage = poopItem.getHitDamage();
+		}
+		hitResult.getEntity().hurt(damageSources().thrown(this, owner), damage);
 	}
 
 	@Override

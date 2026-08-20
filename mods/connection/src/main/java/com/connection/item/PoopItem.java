@@ -18,13 +18,31 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileItem;
 import net.minecraft.world.level.Level;
 
-public final class PoopItem extends Item implements ProjectileItem {
+public class PoopItem extends Item implements ProjectileItem {
 	private static final float PROJECTILE_SHOOT_POWER = 1.5F;
-	private static final int FOOD_RESTORE = 6;
+	private static final float DEFAULT_HIT_DAMAGE = 3.0F;
+	private static final int DEFAULT_FOOD_RESTORE = 6;
+	private static final float DEFAULT_FOOD_SATURATION = 0.6F;
 	private static final int EFFECT_DURATION_TICKS = 20 * 60;
+	private final float hitDamage;
+	private final int foodRestore;
+	private final float foodSaturation;
+	private final boolean appliesStatusEffects;
 
 	public PoopItem(Properties properties) {
+		this(properties, DEFAULT_HIT_DAMAGE, DEFAULT_FOOD_RESTORE, DEFAULT_FOOD_SATURATION, true);
+	}
+
+	protected PoopItem(Properties properties, float hitDamage, int foodRestore, float foodSaturation, boolean appliesStatusEffects) {
 		super(properties);
+		this.hitDamage = hitDamage;
+		this.foodRestore = foodRestore;
+		this.foodSaturation = foodSaturation;
+		this.appliesStatusEffects = appliesStatusEffects;
+	}
+
+	public float getHitDamage() {
+		return hitDamage;
 	}
 
 	@Override
@@ -77,10 +95,12 @@ public final class PoopItem extends Item implements ProjectileItem {
 		);
 
 		if (!level.isClientSide()) {
-			user.getFoodData().eat(FOOD_RESTORE, 0.6F);
-			user.addEffect(new MobEffectInstance(MobEffects.NAUSEA, EFFECT_DURATION_TICKS, 0));
-			user.addEffect(new MobEffectInstance(MobEffects.POISON, EFFECT_DURATION_TICKS, 0));
-			user.addEffect(new MobEffectInstance(MobEffects.SATURATION, EFFECT_DURATION_TICKS, 0));
+			user.getFoodData().eat(foodRestore, foodSaturation);
+			if (appliesStatusEffects) {
+				user.addEffect(new MobEffectInstance(MobEffects.NAUSEA, EFFECT_DURATION_TICKS, 0));
+				user.addEffect(new MobEffectInstance(MobEffects.POISON, EFFECT_DURATION_TICKS, 0));
+				user.addEffect(new MobEffectInstance(MobEffects.SATURATION, EFFECT_DURATION_TICKS, 0));
+			}
 			stack.consume(1, user);
 		}
 

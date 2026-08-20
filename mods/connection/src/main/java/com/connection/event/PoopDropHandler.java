@@ -1,6 +1,7 @@
 package com.connection.event;
 
 import com.connection.item.ModItems;
+import com.connection.power.PoopDropSettings;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
@@ -22,7 +23,7 @@ public final class PoopDropHandler {
 		}
 
 		for (ServerPlayer player : server.getPlayerList().getPlayers()) {
-			if (player.isSpectator() || !player.isAlive() || !player.isShiftKeyDown()) {
+			if (player.isSpectator() || !player.isAlive() || !player.isShiftKeyDown() || !PoopDropSettings.isEnabled(player)) {
 				continue;
 			}
 

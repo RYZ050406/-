@@ -1,4 +1,7 @@
 {
   "item.connection.poop": "屎",
-  "item.connection.fruit_vegetable_powder": "一罐果蔬粉"
+  "item.connection.super_poop": "超级答辩",
+  "item.connection.fruit_vegetable_powder": "一罐果蔬粉",
+  "key.connection.toggle_poop_drop": "切换拉屎",
+  "key.category.connection.connection": "Connection"
 }

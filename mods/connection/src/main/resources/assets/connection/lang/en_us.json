@@ -1,4 +1,7 @@
 {
   "item.connection.poop": "Poop",
-  "item.connection.fruit_vegetable_powder": "Can of Fruit-Vegetable Powder"
+  "item.connection.super_poop": "Super Poop",
+  "item.connection.fruit_vegetable_powder": "Can of Fruit-Vegetable Powder",
+  "key.connection.toggle_poop_drop": "Toggle Poop Dropping",
+  "key.category.connection.connection": "Connection"
 }

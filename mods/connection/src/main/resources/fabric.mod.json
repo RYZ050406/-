@@ -3,7 +3,7 @@
   "id": "connection",
   "version": "${version}",
   "name": "connection",
-  "description": "Adds poop, thrown poop, and fruit-vegetable powder crafting.",
+  "description": "Adds poop, super poop, thrown poop, poop toggling, and fruit-vegetable powder crafting.",
   "authors": [
     "Codex"
   ],
